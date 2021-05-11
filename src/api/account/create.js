@@ -10,7 +10,7 @@ const create = (req, res, next) => {
   })
     .then(resData => {
       if (resData) {
-        req.err = 'Nhân viên đã tồn tại!'
+        req.err = 'Người dùng đã tồn tại!'
         next('last')
       } else {
         if (image && image !== 'null') {
@@ -35,7 +35,7 @@ const create = (req, res, next) => {
                 if (err === null) {
                   res.json({
                     status: true,
-                    message: 'Tạo nhân viên thành công!',
+                    message: 'Tạo Người dùng thành công!',
                     staff: newAccount
                   })
                 } else {
@@ -56,7 +56,7 @@ const create = (req, res, next) => {
             if (err === null) {
               res.json({
                 status: true,
-                message: 'Tạo nhân viên thành công!',
+                message: 'Tạo Người dùng thành công!',
                 staff: newAccount
               })
             } else {

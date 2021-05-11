@@ -20,24 +20,24 @@ const getAll = (req, res, next) => {
             if (count || count === 0) {
               res.json({
                 status: true,
-                message: 'Lấy nhân viên thành công!',
+                message: 'Lấy người dùng thành công!',
                 staffs: resData,
                 currentPage: parseInt(page),
                 totalPage: Math.ceil(count / PAGE_SIZE),
                 totalStaffs: count
               })
             } else {
-              req.err = 'Lỗi lấy nhân viên!'
+              req.err = 'Lỗi lấy người dùng!'
               next('last')
             }
           })
       } else {
-        req.err = 'Lỗi lấy nhân viên!'
+        req.err = 'Lỗi lấy người dùng!'
         next('last')
       }
     })
     .catch(err => {
-      req.err = `Lỗi lấy nhân viên! + ${err}`
+      req.err = `Lỗi lấy người dùng! + ${err}`
       next('last')
     })
 }

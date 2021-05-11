@@ -24,7 +24,7 @@ const remove = (req, res, next) => {
                   }
                   res.json({
                       status: true,
-                      message: "Xóa nhân viên thành công!"
+                      message: "Xóa người dùng thành công!"
                   })
 
               } else {
@@ -33,7 +33,7 @@ const remove = (req, res, next) => {
               }
           })
           .catch(err => {
-              req.err = `Lỗi xóa nhân viên! + ${err}`
+              req.err = `Lỗi xóa người dùng! + ${err}`
               next('last')
           })
   } else {

@@ -4,9 +4,10 @@ const getOne = (req, res, next) => {
     const { _id } = req.params
 
     StoryModel.findOne({ _id })
-        .populate('chaps.chapter')
-        .populate('comments.author', '_id role fullName image')
-        .populate('follows.author', '_id role fullName image')
+        .populate('comments.author', 'image _id fullName')
+        .populate('follows.author', 'image _id fullName')
+        .populate('categories.category')
+        .populate('author', 'image _id fullName')
         .then(resData => {
             if (resData) {
                 res.json({

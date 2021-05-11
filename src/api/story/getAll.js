@@ -11,9 +11,10 @@ const getAll = (req, res, next) => {
   if (search && search !== 'null') query.text = { $regex: search, $options: 'gi'}
 
   StoryModel.find(query)
-    .sort(sort)
     .populate('comments.author', 'image _id fullName')
     .populate('follows.author', 'image _id fullName')
+    .populate('categories.category')
+    .populate('author', 'image _id fullName')
     .skip(skip)
     .limit(limit)
     .then(resData => {
