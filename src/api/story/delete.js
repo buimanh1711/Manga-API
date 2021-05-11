@@ -1,5 +1,5 @@
 const StoryModel = require('../../models/story')
-const ChapModel = require('../../models/chap')
+const ChapterModel = require('../../models/chapter')
 const removeImage = require('../../utils/removeImage')
 
 const remove = (req, res, next) => {
@@ -28,7 +28,7 @@ const remove = (req, res, next) => {
                     })
                 }
 
-                ChapModel.deleteMany({
+                ChapterModel.deleteMany({
                     story: _id
                 })
                     .then(resData2 => {

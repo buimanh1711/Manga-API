@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 const Story = new Schema({
   title: { type: String, maxLength: 255 },
   categories: [{ category: { type: Schema.Types.ObjectId, ref: 'category' } }] || [],
-  chaps: [{ chapter: { type: Schema.Types.ObjectId, ref: 'chap' } }] || [],
+  chapters: [{ chapter: { type: Schema.Types.ObjectId, ref: 'chapter' } }] || [],
   author: { type: Schema.Types.ObjectId, ref: 'account' },
   comments: [{ author: { type: Schema.Types.ObjectId, ref: 'account' }, content: { type: String }, createAt: { type: Date } }] || [],
   follows: [{ author: { type: Schema.Types.ObjectId, ref: 'account' } }] || [],

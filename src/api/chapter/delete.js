@@ -1,9 +1,9 @@
-const ChapModel = require('../../models/chap')
+const ChapterModel = require('../../models/chapter')
 
 const remove = (req, res, next) => {
   const { _id } = req.params
 
-  ChapModel.deleteOne({
+  ChapterModel.deleteOne({
     _id: _id
   })
     .then(resData => {

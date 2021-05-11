@@ -15,6 +15,7 @@ const getAll = (req, res, next) => {
     .populate('follows.author', 'image _id fullName')
     .populate('categories.category')
     .populate('author', 'image _id fullName')
+    .sort(sort)
     .skip(skip)
     .limit(limit)
     .then(resData => {

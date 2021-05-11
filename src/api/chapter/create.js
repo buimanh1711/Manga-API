@@ -1,4 +1,4 @@
-const ChapModel = require('../../models/chap')
+const ChapterModel = require('../../models/chapter')
 const StoryModel = require('../../models/story')
 
 const toSlug = require('../../utils/toSlug')
@@ -6,7 +6,7 @@ const toSlug = require('../../utils/toSlug')
 const create = (req, res, next) => {
   const data = req.body
 
-  ChapModel.findOne({
+  ChapterModel.findOne({
     slug: toSlug(data.name),
     story: data.story
   })
@@ -20,7 +20,7 @@ const create = (req, res, next) => {
           ...data
         }
 
-        const newChapter = new ChapModel(newData)
+        const newChapter = new ChapterModel(newData)
         newChapter.save(err => {
           if (err === null) {
             StoryModel.findByIdAndUpdate({
@@ -28,7 +28,7 @@ const create = (req, res, next) => {
             }, {
               createAt: Date.now(),
               $push: {
-                chaps: { chapter: newChapter._id }
+                chapters: { chapter: newChapter._id }
               }
             })
               .then(resData2 => {

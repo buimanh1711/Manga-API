@@ -3,7 +3,7 @@ const slug = require('mongoose-slug-generator')
 mongoose.plugin(slug)
 const Schema = mongoose.Schema
 
-const Chap = new Schema({
+const Chapter = new Schema({
   name: { type: String, maxLength: 255 },
   story: { type: Schema.Types.ObjectId, ref: 'story' },
   content: { type: String, default: 'Đang cập nhật...'},
@@ -13,4 +13,4 @@ const Chap = new Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('chap', Chap)
+module.exports = mongoose.model('chapter', Chapter)

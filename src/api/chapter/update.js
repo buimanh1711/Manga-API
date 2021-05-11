@@ -1,10 +1,10 @@
-const ChapModel = require('../../models/chap')
+const ChapterModel = require('../../models/chapter')
 
 const update = (req, res, next) => {
   const { _id } = req.params
   const data = req.body
   
-  ChapModel.findOneAndUpdate({
+  ChapterModel.findOneAndUpdate({
     _id
   }, data, { new: true })
     .then((resData) => {
