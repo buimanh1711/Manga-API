@@ -5,16 +5,16 @@ const getOne = (req, res, next) => {
 
     StoryModel.findOne({ _id })
         .populate('chaps.chapter')
-        .populate('comments.author')
-        .populate('follows.author')
+        .populate('comments.author', '_id role fullName image')
+        .populate('follows.author', '_id role fullName image')
         .then(resData => {
             if (resData) {
                 res.json({
                     status: true,
-                    guest: resData
+                    story: resData
                 })
             } else {
-                req.err = 'Không tìm thấy khách hàng!'
+                req.err = 'Không tìm thấy truyện!'
                 next('last')
             }
         })

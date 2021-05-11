@@ -1,4 +1,4 @@
-const Story = require('../../models/story')
+const StoryModel = require('../../models/story')
 const uploadImage = require('../../utils/uploadImage')
 const removeImage = require('../../utils/removeImage')
 
@@ -64,7 +64,7 @@ const update = (req, res, next) => {
     })
 
   } else {
-    Story.findOneAndUpdate({
+    StoryModel.findOneAndUpdate({
       _id
     }, data, { new: true })
       .then(resData => {

@@ -1,4 +1,5 @@
 const StoryModel = require('../../models/story')
+const ChapModel = require('../../models/chap')
 const removeImage = require('../../utils/removeImage')
 
 const remove = (req, res, next) => {
@@ -16,7 +17,7 @@ const remove = (req, res, next) => {
     })
         .then(resData => {
             if (resData) {
-                if (image.publicId) {
+                if (image && image.publicId) {
                     removeImage(image.publicId, {}, (err, result) => {
                         if (err) {
                             console.log('Lỗi xóa ảnh!')
@@ -26,10 +27,21 @@ const remove = (req, res, next) => {
                         }
                     })
                 }
-                res.json({
-                    status: true,
-                    message: 'Xóa truyện thành công!'
+
+                ChapModel.deleteMany({
+                    story: _id
                 })
+                    .then(resData2 => {
+                        if (resData2) {
+                            res.json({
+                                status: true,
+                                message: 'Xóa truyện thành công!'
+                            })
+                        } else {
+                            req.err = "Không thể xóa"
+                            next('last')
+                        }
+                    })
             } else {
                 req.err = "Không thể xóa"
                 next('last')

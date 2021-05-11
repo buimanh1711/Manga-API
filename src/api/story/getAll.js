@@ -3,7 +3,7 @@ const getPage = require('../../utils/getPage')
 const PAGE_SIZE = 10
 
 const getAll = (req, res, next) => {
-  const { category, page, search } = req.query
+  const { category, page, search, sort } = req.query
   const { skip, limit } = getPage(page, PAGE_SIZE)
   const query = {}
 
@@ -11,6 +11,7 @@ const getAll = (req, res, next) => {
   if (search && search !== 'null') query.text = { $regex: search, $options: 'gi'}
 
   StoryModel.find(query)
+    .sort(sort)
     .populate('comments.author', 'image _id fullName')
     .populate('follows.author', 'image _id fullName')
     .skip(skip)
