@@ -1,15 +1,16 @@
-const Story = require('../../models/story')
+const StoryModel = require('../../models/story')
 
 const comment = (req, res, next) => {
   const { _id } = req.params
   const data = req.body
-  const { authorId, content } = data
+  const { content } = data
+  const { userId } = req
 
-  Story.updateOne({
+  StoryModel.updateOne({
     _id
   }, {
     $push: {
-      comments: { author: { _id: authorId }, content, createAt: Date.now() }
+      comments: { author: { _id: userId }, content, createAt: Date.now() }
     }
   })
     .then(resData => {
@@ -30,3 +31,4 @@ const comment = (req, res, next) => {
 }
 
 module.exports = comment
+

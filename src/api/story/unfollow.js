@@ -1,23 +1,28 @@
 const StoryModel = require('../../models/story')
 const AccountModel = require('../../models/account')
 
-const follow = (req, res, next) => {
-  const { _id } = req.params
-  const { userId } = req
+const unfollow = (req, res, next) => {
+  const { _id, followId, authorId } = req.params
+  const { userId, userRole } = req
+
+  if (userRole !== 'admin' && userId !== authorId) {
+    req.err = "Không có quyền!"
+    return next('last')
+  }
 
   StoryModel.updateOne({
     _id
   }, {
-    $push: {
-      follows: { author: { _id: userId } }
+    $pull: {
+      follows: { _id: followId }
     }
   })
     .then(resData => {
       if (resData) {
         AccountModel.findOneAndUpdate({
-          _id: userId
+          _id: authorId
         }, {
-          $push: {
+          $pull: {
             following: { story: _id }
           }
         })
@@ -25,19 +30,19 @@ const follow = (req, res, next) => {
             if (resData2) {
               res.json({
                 status: true,
-                message: 'follow khách hàng thành công!'
+                message: 'unfollow khách hàng thành công!'
               })
             }
           })
       } else {
-        req.err = 'Lỗi follow!'
+        req.err = 'Lỗi unfollow!'
         return next('last')
       }
     })
     .catch(err => {
-      req.err = 'Lỗi follow! ' + err
+      req.err = 'Lỗi unfollow! ' + err
       next('last')
     })
 }
 
-module.exports = follow
+module.exports = unfollow
