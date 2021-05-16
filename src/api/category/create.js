@@ -14,7 +14,7 @@ const create = (req, res, next) => {
     slug: toSlug(data.title)
   })
     .then(resData => {
-      if (!resData) {
+      if (resData) {
         res.json({
           status: false,
           message: 'Chuyên mục đã tồn tại!',

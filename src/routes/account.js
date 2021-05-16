@@ -10,6 +10,6 @@ const router = express.Router()
 router.delete('/:_id', auth, remove)
 router.put('/:_id', auth, update)
 router.get('/:_id', auth, getOne)
-router.post('/', create)
+router.post('/register', create)
 router.get('/', auth, getAll)
 module.exports = router
