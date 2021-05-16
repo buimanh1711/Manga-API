@@ -6,6 +6,8 @@ const update = (req, res, next) => {
   const { _id } = req.params
   const data = req.body
   const { userRole } = req
+  data.categories = JSON.parse(data.categories).map(item => ({ category: item }))
+  data.image = JSON.parse(data.image)
 
   if (userRole !== 'admin') {
     req.err = 'Bạn không có quyền'

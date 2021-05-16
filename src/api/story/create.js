@@ -12,6 +12,8 @@ const create = (req, res, next) => {
     return next('last')
   }
 
+  data.categories = JSON.parse(data.categories).map(item => ({ category: item }))
+
   StoryModel.findOne({
     slug: data.slug
   })
