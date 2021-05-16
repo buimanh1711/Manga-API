@@ -3,6 +3,7 @@ const uploadImage = require('../../utils/uploadImage')
 
 const create = (req, res, next) => {
   const data = req.body
+
   const { image } = data
   const { userRole } = req
 
