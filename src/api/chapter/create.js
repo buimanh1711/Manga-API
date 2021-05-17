@@ -40,7 +40,6 @@ const create = (req, res, next) => {
                   })
                 } else {
                   req.err = 'Thêm chapter thất bại!'
-                  console.log(err)
                   next('last')
                 }
               })

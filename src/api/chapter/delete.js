@@ -1,16 +1,33 @@
 const ChapterModel = require('../../models/chapter')
+const StoryModel = require('../../models/story')
 
 const remove = (req, res, next) => {
-  const { _id } = req.params
+  const { _id, storyId } = req.params
 
   ChapterModel.deleteOne({
     _id: _id
   })
     .then(resData => {
       if (resData) {
-        res.json({
-          status: true
+        StoryModel.findByIdAndUpdate({
+          _id: storyId
+        }, {
+          createAt: Date.now(),
+          $pull: {
+            chapters: { chapter: _id }
+          }
         })
+          .then(resData2 => {
+            if (resData2) {
+              res.json({
+                status: true
+              })
+            } else {
+              req.err = 'Xoá chapter thất bại!'
+              console.log(err)
+              next('last')
+            }
+          })
       } else {
         req.err = "Không thể xóa"
         next('last')
