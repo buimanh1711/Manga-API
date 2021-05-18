@@ -12,7 +12,7 @@ const remove = (req, res, next) => {
         StoryModel.findByIdAndUpdate({
           _id: storyId
         }, {
-          createAt: Date.now(),
+          createdAt: Date.now(),
           $pull: {
             chapters: { chapter: _id }
           }

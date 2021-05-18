@@ -26,7 +26,7 @@ const create = (req, res, next) => {
             StoryModel.findByIdAndUpdate({
               _id: data.story
             }, {
-              createAt: Date.now(),
+              updateAt: Date.now(),
               $push: {
                 chapters: { chapter: newChapter._id }
               }

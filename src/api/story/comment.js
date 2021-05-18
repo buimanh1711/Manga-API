@@ -10,7 +10,7 @@ const comment = (req, res, next) => {
     _id
   }, {
     $push: {
-      comments: { author: { _id: userId }, content, createAt: Date.now() }
+      comments: { author: { _id: userId }, content, createdAt: Date.now() }
     }
   })
     .then(resData => {

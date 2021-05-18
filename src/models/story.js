@@ -8,7 +8,7 @@ const Story = new Schema({
   categories: [{ category: { type: Schema.Types.ObjectId, ref: 'category' } }] || [],
   chapters: [{ chapter: { type: Schema.Types.ObjectId, ref: 'chapter' } }] || [],
   author: { type: Schema.Types.ObjectId, ref: 'account' },
-  comments: [{ author: { type: Schema.Types.ObjectId, ref: 'account' }, content: { type: String }, createAt: { type: Date } }] || [],
+  comments: [{ author: { type: Schema.Types.ObjectId, ref: 'account' }, content: { type: String }, createdAt: { type: Date } }] || [],
   follows: [{ author: { type: Schema.Types.ObjectId, ref: 'account' } }] || [],
   isCompleted: { type: Boolean, default: false },
   image: { type: Object, default: { url: '/images/user_default_img.png' } },
