@@ -17,7 +17,7 @@ const comment = (req, res, next) => {
       if (resData) {
         res.json({
           status: true,
-          message: 'comment truyện thành công!'
+          message: 'comment truyện thành công!',
         })
       } else {
         req.err = 'Lỗi comment!'
