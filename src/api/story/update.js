@@ -11,7 +11,7 @@ const update = (req, res, next) => {
     data.categories = JSON.parse(data.categories).map(item => ({ category: item }))
   }
 
-  if (!typeof data.image === 'object') {
+  if (typeof data.image === 'string') {
     data.image = JSON.parse(data.image)
   }
 

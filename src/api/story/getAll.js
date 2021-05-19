@@ -1,6 +1,6 @@
 const StoryModel = require('../../models/story')
 const getPage = require('../../utils/getPage')
-const PAGE_SIZE = 10
+const PAGE_SIZE = 18
 
 const getAll = (req, res, next) => {
   const { categories, page, search, userFollow, sort } = req.query
@@ -18,7 +18,6 @@ const getAll = (req, res, next) => {
   }
 
   if (search && search !== 'null') query["text"] = { $regex: search, $options: 'gi' }
-  console.log('query: ', req.query)
 
   StoryModel.find(query)
     .populate('comments.author', 'image _id fullName')
