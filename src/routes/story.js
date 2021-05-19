@@ -18,7 +18,7 @@ router.delete('/:_id/:commentId/:authorId/comment/remove', auth, deleteComment)
 router.put('/:_id/comment', auth, comment)
 router.delete('/:_id', auth, remove)
 router.put('/:_id', auth, update)
-router.get('/:_id', auth, getOne)
+router.get('/:_id', getOne)
 router.post('/', auth, create)
 router.get('/', getAll)
 

@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
       req.err = 'Bạn chưa đăng nhập!'
     }
   } else {
-    req.err = 'Không thể lấy token!'
+    req.err = 'Bạn chưa đăng nhập!'
     next('last')
   }
 

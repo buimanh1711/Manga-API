@@ -14,6 +14,7 @@ const Story = new Schema({
   image: { type: Object, default: { url: '/images/user_default_img.png' } },
   shortDescription: { type: String, default: 'Đang cập nhật...' },
   slug: { type: String, slug: "title" },
+  updatedChap: { type: Date, default: Date.now() },
   text: { type: String, default: "" }
 }, {
   timestamps: true
