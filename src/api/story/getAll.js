@@ -18,7 +18,6 @@ const getAll = (req, res, next) => {
   }
 
   if (search && search !== 'null') query["text"] = { $regex: search, $options: 'gi' }
-
   StoryModel.find(query)
     .populate('comments.author', 'image _id fullName')
     .populate('follows.author', 'image _id fullName')

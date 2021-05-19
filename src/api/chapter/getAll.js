@@ -4,7 +4,6 @@ const PAGE_SIZE = 8
 
 const getAll = (req, res, next) => {
   const { page, story, search, sort } = req.query
-  console.log('story: ', story)
   if (!story) {
     req.err = 'Yêu cầu không hợp lệ!'
     return next('last')
