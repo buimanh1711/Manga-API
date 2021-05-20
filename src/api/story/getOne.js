@@ -8,7 +8,7 @@ const getOne = (req, res, next) => {
         .populate('follows.author', 'image _id fullName')
         .populate('categories.category')
         .populate('author', 'image _id fullName')
-        .populate('chapters.chapter', '_id name createdAt')
+        .populate('chapters.chapter', '_id name content createdAt')
         .then(resData => {
             if (resData) {
                 res.json({
