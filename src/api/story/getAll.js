@@ -1,6 +1,6 @@
 const StoryModel = require('../../models/story')
 const getPage = require('../../utils/getPage')
-const PAGE_SIZE = 18
+const PAGE_SIZE = 12
 
 const getAll = (req, res, next) => {
   const { categories, page, search, userFollow, sort } = req.query
