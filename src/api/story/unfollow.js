@@ -30,7 +30,7 @@ const unfollow = (req, res, next) => {
             if (resData2) {
               res.json({
                 status: true,
-                message: 'unfollow khách hàng thành công!'
+                message: 'unfollow truyện hàng thành công!'
               })
             }
           })

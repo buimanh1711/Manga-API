@@ -25,7 +25,7 @@ const follow = (req, res, next) => {
             if (resData2) {
               res.json({
                 status: true,
-                message: 'follow khách hàng thành công!'
+                message: 'follow truyện hàng thành công!'
               })
             }
           })
