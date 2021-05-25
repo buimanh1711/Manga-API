@@ -2,7 +2,7 @@ const StoryModel = require('../../models/story')
 const AccountModel = require('../../models/account')
 
 const unfollow = (req, res, next) => {
-  const { _id, followId, authorId } = req.params
+  const { _id, authorId } = req.params
   const { userId, userRole } = req
 
   if (userRole !== 'admin' && userId !== authorId) {
@@ -14,7 +14,7 @@ const unfollow = (req, res, next) => {
     _id
   }, {
     $pull: {
-      follows: { _id: followId }
+      follows: { author: authorId }
     }
   })
     .then(resData => {
